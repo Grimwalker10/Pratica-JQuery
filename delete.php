@@ -36,15 +36,23 @@ $em = ($row['correo']);
 <title>Eliminar alumno</title>
 <?php include 'head.php'; ?>
 </head><body>
-<h1>Eliminar alumno</h1>
+<div class="container card shadow-lg border-0 rounded-lg mt-5">
+    <h1 class="mt-4">Eliminar alumno</h1>
+    <hr>
+    <h3 class="mt-4">¿Desea eliminar al alumno: <?= ($row['nombres'] . ", " . $row['apellidos']) ?>?</h3>
 
-<h1>Desea eliminar al alumno: <?= ($row['nombres'] .", " . $row['apellidos']) ?></h1>
-
-<form method="post">
-<p>Alumno: <?php echo($fn);?></p>
-<p>Correo:<?php echo($em);?></p>
-
-<input type="hidden" name="id_alumno" value="<?= $row['id_alumno'] ?>">
-<input type="submit" value="Delete" name="delete">
-<a href="index.php">Cancel</a>
-</form>
+    <form method="post">
+        <div class="form-group">
+            <label for="alumno">Alumno:</label>
+            <input type="text" class="form-control" value="<?= $fn ?>" readonly>
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo:</label>
+            <input type="text" class="form-control" value="<?= $em ?>" readonly>
+        </div>
+        <input type="hidden" name="id_alumno" value="<?= $row['id_alumno'] ?>">
+        <hr>
+        <button type="submit" class="btn btn-danger" name="delete"><i class="fas fa-trash"></i> Eliminar</button>
+        <a href="index.php" class="btn btn-warning"><i class="fas fa-times"></i> Cancelar</a>
+    </form>
+</div>

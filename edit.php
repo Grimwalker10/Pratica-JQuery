@@ -110,42 +110,47 @@ if (isset($_GET['id_alumno'])) {
 ?>
 <html>
 <head>
-<?php include 'head.php'; ?>
 <title>Editar estudiante</title>
+<?php include 'head.php'; ?>
 </head><body>
 <div class="container">
     <h1 class="mt-4">Editar estudiante</h1>
-
+    <hr>
     <?php
     if (isset($_SESSION['error'])) {
         echo '<p class="alert alert-danger">' . $_SESSION['error'] . "</p>\n";
+        echo '<hr>';
         unset($_SESSION['error']);
     }
     if (isset($_SESSION['success'])) {
         echo '<p class="alert alert-success">' . $_SESSION['success'] . "</p>\n";
+        echo '<hr>';
         unset($_SESSION['success']);
     }
     ?>
 
     <form method="post">
         <input type="hidden" name="id_alumno" value="<?= $id_alumno ?>">
-        <p>Nombres:
-            <input type="text" name="nombres" value="<?= $nombres ?>">
-        </p>
-        <p>Apellidos:
-            <input type="text" name="apellidos" value="<?= $apellidos ?>">
-        </p>
-        <p>Correo:
-            <input type="text" name="correo" value="<?= $correo ?>">
-        </p>
-        <p>Aficiones:<br>
-            <textarea name="aficiones" rows="8" cols="80"><?= $aficiones ?></textarea>
-        </p>
-
-        <p>
-            Cursos y/o certificaciones:
-            <button type="button" id="addCurso">+</button>
-        </p>
+        <div class="form-group">
+            <label for="nombres">Nombres:</label>
+            <input type="text" name="nombres" class="form-control" value="<?= $nombres ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" name="apellidos" class="form-control" value="<?= $apellidos ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo:</label>
+            <input type="mail" name="correo" class="form-control" value="<?= $correo ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="aficiones">Aficiones:</label>
+            <textarea name="aficiones" class="form-control" rows="8" cols="80"><?= $aficiones ?></textarea>
+        </div>
+        <div class="form-group">
+            <p>Cursos y/o certificaciones:</p>
+            <button type="button" id="addCurso" class="btn btn-primary"><i class="fas fa-plus"></i> Agregar</button>
+        </div>
         <div id="curso_fields">
             <?php
             $cuentaCur = 1;
@@ -153,18 +158,21 @@ if (isset($_GET['id_alumno'])) {
                 foreach ($cursos as $curso) {
                     $anio = $curso['anio'];
                     $nombre_curso = $curso['curso'];
-                    echo '<div id="curso' . $cuentaCur . '">';
+                    echo '<div class="form-group" id="curso' . $cuentaCur . '">';
+                    echo'<hr>';
                     echo '<p>Year: <input type="text" name="cur_anio' . $cuentaCur . '" value="' . $anio . '" /> ';
-                    echo '<input type="button" value="-" onclick="$(\'#curso' . $cuentaCur . '\').remove();return false;"></p> ';
+                    echo '<input type="button" class="btn btn-danger" value="-" onclick="$(\'#curso' . $cuentaCur . '\').remove();return false;"></p> ';
                     echo '<p>Curso: <input type="text" name="cur_nombre' . $cuentaCur . '" class="cursos" value="' . $nombre_curso . '" /> </div>';
                     $cuentaCur++;
                 }
             }
             ?>
         </div>
-
-        <p><input type="submit" value="Guardar cambios" onclick="return doValidate();"/>
-            <a href="index.php">Cancelar</a></p>
+        <hr>
+        <div class="form-group">
+            <input type="submit" value="Guardar" onclick="return doValidate();" class="btn btn-success">
+            <a href="index.php" class="btn btn-danger">Cancelar</a>
+        </div>
     </form>
 </div>
 <script>
@@ -199,9 +207,10 @@ if (isset($_GET['id_alumno'])) {
             cuentaCur++;
             window.console && console.log("Agregando curso| " + cuentaCur);
             $('#curso_fields').append(
-                '<div id="curso' + cuentaCur + '"> \
+                '<div class="form-group" id="curso' + cuentaCur + '"> \
+                <hr> \
                 <p>Year: <input type="text" name="cur_anio' + cuentaCur + '" value="" /> \
-                <input type="button" value="-" onclick="$(\'#curso' + cuentaCur + '\').remove();return false;"></p> \
+                <input type="button" class="btn btn-danger" value="-" onclick="$(\'#curso' + cuentaCur + '\').remove();return false;"></p> \
                 <p>Curso: <input type="text" name="cur_nombre' + cuentaCur + '" class="cursos" value="" /> \
                 </div>'
             );

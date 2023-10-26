@@ -37,7 +37,7 @@ $id = $row['id_alumno'];
 <title>Consulta de Alumno</title>
 <?php include 'head.php'; ?>
 </head><body>
-<div class="container">
+<div class="container card shadow-lg border-0 rounded-lg mt-5">
         <h1 class="mt-4">Consulta de Alumno</h1>
         <hr>
         <form class="mt-4">

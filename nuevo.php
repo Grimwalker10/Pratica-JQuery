@@ -91,22 +91,23 @@ if (isset($_SESSION['error'])) {
 </head><body>
 <div class="container">
     <h1 class="mt-4">Ingreso de nuevo estudiante</h1>
+    <hr>
     <form method="post">
         <div class="form-group">
             <label for="nombres">Nombres:</label>
-            <input type="text" name="nombres" id="nombres" class="form-control" required>
+            <input type="text" name="nombres" id="fn" class="form-control" required>
         </div>
         <div class="form-group">
             <label for="apellidos">Apellidos:</label>
-            <input type="text" name="apellidos" id="apellidos" class="form-control" required>
+            <input type="text" name="apellidos" id="ln" class="form-control" required>
         </div>
         <div class="form-group">
             <label for="correo">Correo:</label>
-            <input type="mail" name="correo" id="correo" class="form-control" required>
+            <input type="mail" name="correo" id="em" class="form-control" required>
         </div>
         <div class="form-group">
             <label for="aficiones">Aficiones:</label>
-            <textarea name="aficiones" rows="8" cols="80" id="aficiones" class="form-control" required></textarea>
+            <textarea name="aficiones" rows="8" cols="80" id="afi" class="form-control" required></textarea>
         </div>
         <div class="form-group">
             <p>Cursos y/o certificaciones:</p>

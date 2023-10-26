@@ -7,6 +7,26 @@ session_start();
 <title>Lista de estudiantes</title>
 <?php include 'head.php'; ?>
 </head><body>
+<?php
+        echo "<center>";
+        echo "<h1>Diego Jose Lutin Miranda, Carnet: 5190-20-16218</h1>";
+        echo "</center>";
+
+        echo "<p>";
+        echo "<strong>Archivo:</strong> {$_SERVER['PHP_SELF']}<br>";
+        echo "<strong>Servidor:</strong> {$_SERVER['SERVER_NAME']}<br>";
+        echo "<strong>Cliente IP:</strong> {$_SERVER['REMOTE_ADDR']}<br>";
+
+        if (isset($_SERVER['REMOTE_HOST'])) {
+            echo "<strong>Cliente Nombre:</strong> {$_SERVER['REMOTE_HOST']}<br>";
+        } else {
+            echo "<strong>Cliente Nombre:</strong> No disponible<br>";
+        }
+
+        echo "<strong>User Agent:</strong> {$_SERVER['HTTP_USER_AGENT']}<br>";
+        echo "</p>";
+        echo "<hr>"
+    ?>
 <div class="container">
 <h1 class="mt-4">Lista de estudiantes</h1>
 
